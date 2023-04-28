@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla Capstone Presentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F4F4F4;
+        }
+
+        .slide-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px;
+        }
+
+        .slide {
+            display: none;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        h1, h2 {
+            color: #CC0000;
+        }
+
+        p {
+            color: #333;
+        }
+
+        .next, .prev {
+            position: fixed;
+            bottom: 20px;
+            font-size: 24px;
+            color: #CC0000;
+            cursor: pointer;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        .prev {
+            left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="slide active">
+            <h1>Slide 1: Introduction</h1>
+            <p>Content for slide 1...</p>
+        </div>
+        <div class="slide">
+            <h1>Slide 2: Background</h1>
+            <p>Content for slide 2...</p>
+        </div>
+        <!-- Add more slides as needed -->
+    </div>
+
+    <span class="prev">&#10094;</span>
+    <span class="next">&#10095;</span>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let activeIndex = 0;
+
+        function updateSlides() {
+            slides.forEach((slide, index) => {
+                if (index === activeIndex) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+        }
+
+        document.querySelector('.next').addEventListener('click', () => {
+            activeIndex = (activeIndex + 1) % slides.length;
+            updateSlides();
+        });
+
+        document.querySelector('.prev').addEventListener('click', () => {
+            activeIndex = (activeIndex - 1 + slides.length) % slides.length;
+            updateSlides();
+        });
+    </script>
+</body>
+</html>
